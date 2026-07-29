@@ -31,6 +31,9 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 frontend http_front
     bind *:80
+    redirect scheme https code 301
+
+frontend https_front
     bind *:443 ssl crt /etc/haproxy/certs/www.kaste.tech.pem
     default_backend http_back
 backend http_back
